@@ -1,6 +1,6 @@
 This directory contains few transformer-based pre-trained models trained with different datasets.
 The datasets were generated using `sentence delete` or `word delete` techniques
-mentioned in this [paper](https://aclanthology.org/2022.naacl-main.175/).
+mentioned in the SueNes [paper](https://aclanthology.org/2022.naacl-main.175/).
 
 ## Environmet Setup
 - `git clone https://github.com/JobayerAhmmed/SueNes.git`
@@ -25,9 +25,10 @@ This model is trained from checkpoint found in
 Data is generated from CNN Daily Mail dataset using 
 [SueNes](https://github.com/forrestbao/SueNes).
 Only `sentence delete` technique, defined in 
-[SueNes paper](https://aclanthology.org/2022.naacl-main.175/),
+SueNes [paper](https://aclanthology.org/2022.naacl-main.175/),
 is used for data generation.
-From the generated data, only 10% data is used for training.
+Only 10% data is considered from CNN Daily Mail dataset's train split
+for generating train split for our experiment.
 
 ### Train Model
 - `cd transformer`
@@ -43,9 +44,10 @@ This model is trained from checkpoint found in
 Data is generated from CNN Daily Mail dataset using 
 [SueNes](https://github.com/forrestbao/SueNes).
 Only `sentence delete` technique, defined in 
-[SueNes paper](https://aclanthology.org/2022.naacl-main.175/),
+SueNes [paper](https://aclanthology.org/2022.naacl-main.175/),
 is used for data generation.
-From the generated data, only 10% data is used for training.
+Only 10% data is considered from CNN Daily Mail dataset's train split
+for generating train split for our experiment.
 
 ### Train Model
 - `cd transformer`
