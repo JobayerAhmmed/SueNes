@@ -30,11 +30,11 @@ is used for data generation.
 Only 10% data is considered from CNN Daily Mail dataset's train split
 for generating train split for our experiment.
 
-### Train Model
+#### Train Model
 - `cd transformer`
 - `python3 bert_tiny_cnndm_tf.py`
 
-### Test Model
+#### Test Model
 - `python3 bert_tiny_cnndm_tf_wrap.py`
 
 ## Bert Tiny CNN Daily Mail PyTorch
@@ -49,10 +49,10 @@ is used for data generation.
 Only 10% data is considered from CNN Daily Mail dataset's train split
 for generating train split for our experiment.
 
-### Train Model
+#### Train Model
 - `cd transformer`
 - `python3 bert_tiny_cnndm_pt.py`
 
-### Test Model
+#### Test Model
 - `python3 bert_tiny_cnndm_pt_wrap.py`
 
