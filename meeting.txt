@@ -71,4 +71,6 @@ Step 4:
 
 11/16/22
 ====================
-- folder: transformer
+- Move all the code to a directory named transformer.
+- Train two more models with billsum and big patent datasets.
+- Publish the two models to huggingface.

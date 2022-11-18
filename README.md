@@ -2,6 +2,9 @@
 
 [Here is NAACL 2022 paper](https://aclanthology.org/2022.naacl-main.175/)
 
+## Repeat Transformer-based Experiments
+Please read [README.md](transformer/README.md)
+
 ## Dependencies and environment
 * The negative sampling code requires TF 2.x and [`tensorflow_datasets`](https://www.tensorflow.org/datasets). 
 * The `bert` code requires TF 1.15. We run our experiments using [nVidia's TF fork](https://github.com/NVIDIA/tensorflow). 

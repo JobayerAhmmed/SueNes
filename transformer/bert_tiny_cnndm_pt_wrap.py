@@ -60,4 +60,7 @@ documents = [text] * 3
 path_to_model = "./models/bert_tiny_cnndm_pt"
 
 pred_scores = suenes(documents, summaries, path_to_model)
-print(pred_scores)
+
+original_scores = [1.0, 0.2, 0.4]
+print('Original scores:', original_scores)
+print('Predicted scores:', pred_scores)
