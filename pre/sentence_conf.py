@@ -32,7 +32,7 @@ splits = ['train', 'test', 'validation']
 #========= data output/dumping parameters 
 
 data_root = "../exp/data"  # new for sentence-level mutation
-data_dir = "/data/NLP"  # comment this line, used for big_patent
+data_dir = "/data/NLP"  # comment this line, or change it according to your local PC
 
 n_jobs = 35
 

@@ -3,6 +3,9 @@ The datasets were generated using `sentence delete` or `word delete` techniques
 mentioned in the SueNes [paper](https://aclanthology.org/2022.naacl-main.175/).
 
 ## Environmet Setup
+You can create virtual environment using Python or Conda.
+
+#### Python venv (CPU Only)
 - `git clone https://github.com/JobayerAhmmed/SueNes.git`
 - `cd SueNes`
 - `python3 -m venv .venv`
@@ -11,6 +14,12 @@ mentioned in the SueNes [paper](https://aclanthology.org/2022.naacl-main.175/).
 - `python -m spacy download en_core_web_sm`
 - `pip install transformers datasets scikit-learn evaluate`
 - `pip install pyyaml h5py`
+
+#### Conda venv (GPU)
+- Create venv following [this](https://www.tensorflow.org/install/pip#linux) documentation
+- `pip install tensorflow tensorflow-datasets tensorflow_hub`
+- Install PyTorch following [this](https://pytorch.org/get-started/locally/) documentation
+- `pip install joblib numpy nltk matplotlib bs4 spacy stanza`
 
 ## Generate Datasets
 - `mkdir exp exp/data exp/result`

@@ -14,6 +14,7 @@ import spacy
 import tensorflow_datasets as tfds
 
 import time
+import logging
 
 from sample_generation import auto_escape, replace_special_character, normalize_sentence
 
@@ -301,4 +302,5 @@ def sample_generation(conf):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     sample_generation("sentence_conf")
