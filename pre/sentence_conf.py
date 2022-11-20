@@ -18,7 +18,7 @@ dataset_sizes = {
 
 dataset_sizes_w_split = {# new for sentence-level mutation
     "cnn_dailymail":{'train':28711, 'test':1149, 'validation': 1336}, # 10%
-    "big_patent":{'train':120722, 'test':6707, 'validation': 6706}, # 10%
+    # "big_patent":{'train':120722, 'test':6707, 'validation': 6706}, # 10%
 }
 
 #======== data loading parameters 
@@ -32,7 +32,6 @@ splits = ['train', 'test', 'validation']
 #========= data output/dumping parameters 
 
 data_root = "../exp/data"  # new for sentence-level mutation
-data_dir = "/data/NLP"  # todo: remove this and all usage
 
 n_jobs = 35
 

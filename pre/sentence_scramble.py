@@ -215,7 +215,7 @@ def mutate(pairs, method, dumpfile, neg_pos_ratio, mode='len',debug=False):
 
     return lines
 
-def generate_one(dataset_name, split, data_dir, features, methods, neg_pos_ratio, load_start, load_end, special_chars, data_root, tokenizer_name, n_jobs, spacy_batch_size, batch_id, mode): 
+def generate_one(dataset_name, split, features, methods, neg_pos_ratio, load_start, load_end, special_chars, data_root, tokenizer_name, n_jobs, spacy_batch_size, batch_id, mode): 
     """Generate one batch of data for one split (test or train) on one dataset, 
     given the start and end indexes of samples in the dataset
     """
@@ -223,7 +223,6 @@ def generate_one(dataset_name, split, data_dir, features, methods, neg_pos_ratio
     # 1. Load data 
     dataset = tfds.load(name=dataset_name,
                         split=split+ '[{}:{}]'.format(load_start, load_end),
-                        data_dir=data_dir,
                         download=True,
                         try_gcs=True # todo: remove this
                     )
@@ -296,7 +295,7 @@ def sample_generation(conf):
             for batch_id, (load_start, load_end) in enumerate(boundaries):
                 print ("\t batch {0}/{1}".format(batch_id+1, len(boundaries)), end="...", flush=True)
                 start_time = time.time()
-                generate_one(dataset_name, split, cfg.data_dir, features, cfg.methods, cfg.neg_pos_ratio, load_start, load_end, cfg.special_characters_to_clean, cfg.data_root, cfg.tokenizer_name, cfg.n_jobs, cfg.spacy_batch_size, batch_id, cfg.mode)
+                generate_one(dataset_name, split, features, cfg.methods, cfg.neg_pos_ratio, load_start, load_end, cfg.special_characters_to_clean, cfg.data_root, cfg.tokenizer_name, cfg.n_jobs, cfg.spacy_batch_size, batch_id, cfg.mode)
 
                 elapse = time.time() - start_time
                 print ("  Took {:.3f} seconds".format(elapse))
