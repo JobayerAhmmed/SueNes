@@ -13,6 +13,8 @@ You can create virtual environment using Python or Conda.
 - `pip install -r requirements.txt`
 - `python -m spacy download en_core_web_sm`
 - `pip install transformers datasets scikit-learn evaluate pyyaml h5py`
+- Issue: replace `from keras.saving.hdf5_format` by `from tensorflow.python.keras.saving.hdf5_format` 
+    at line 39 of `.venv/lib/python3.10/site-packages/transformers/modeling_tf_utils.py`
 
 #### Conda venv (GPU)
 - Create venv following [this](https://www.tensorflow.org/install/pip#linux) documentation
