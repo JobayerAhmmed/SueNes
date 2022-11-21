@@ -8,7 +8,7 @@ The `transformer` directory contains code for training transformer-based models 
 The datasets were generated using `sentence delete` or `word delete` techniques
 mentioned in the SueNes [paper](https://aclanthology.org/2022.naacl-main.175/).
 
-## Environmet Setup
+### Environmet Setup
 You can create virtual environment using Python or Conda.
 
 #### Python venv (CPU Only)
@@ -30,13 +30,13 @@ You can create virtual environment using Python or Conda.
 - `python -m spacy download en_core_web_sm`
 - `pip install transformers datasets scikit-learn evaluate pyyaml h5py`
 
-## Generate Datasets
+### Generate Datasets
 - `mkdir exp exp/data exp/result`
 - `cd pre`
 - `python3 sentence_scramble.py`
 - `python3 sample_generation.py`
 
-## Bert Tiny CNN Daily Mail TensorFlow
+### Bert Tiny CNN Daily Mail TensorFlow
 Code for the model is in `bert_tiny_cnndm_tf.py` file.
 This model is trained from checkpoint found in 
 [prajjwal1/bert-tiny](https://huggingface.co/prajjwal1/bert-tiny). 
@@ -55,7 +55,7 @@ for generating train split for our experiment.
 #### Test Model
 - `python3 bert_tiny_cnndm_tf_wrap.py`
 
-## Bert Tiny CNN Daily Mail PyTorch
+### Bert Tiny CNN Daily Mail PyTorch
 Code for the model is in `bert_tiny_cnndm_pt.py` file.
 This model is trained from checkpoint found in 
 [prajjwal1/bert-tiny](https://huggingface.co/prajjwal1/bert-tiny). 
