@@ -84,8 +84,8 @@ def bert_tiny_cnndm_tf():
     # 
     # Other people will be able to load your trained model
     # and use for predicting the result
-    tokenizer.save_pretrained(save_dir)
-    model.save_pretrained(save_dir)
+    tokenizer.save_pretrained(models_dir)
+    model.save_pretrained(models_dir)
 
     # Predict score for validation dataset (optional)
     # 
