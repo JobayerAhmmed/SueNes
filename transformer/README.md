@@ -1,4 +1,4 @@
-This directory contains few transformer-based pre-trained models trained with different datasets.
+The `transformer` directory contains code for training transformer-based models with different datasets.
 The datasets were generated using `sentence delete` or `word delete` techniques
 mentioned in the SueNes [paper](https://aclanthology.org/2022.naacl-main.175/).
 
