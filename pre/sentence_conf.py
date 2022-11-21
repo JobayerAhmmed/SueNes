@@ -25,7 +25,10 @@ dataset_sizes_w_split = {# new for sentence-level mutation
 
 # Must match their names in TFDS 
 # dataset_name = "dryrun" 
-dataset_names = ["cnn_dailymail", "big_patent"] 
+dataset_names = [
+    "cnn_dailymail", 
+    # "big_patent"
+] 
 
 splits = ['train', 'test', 'validation'] 
 

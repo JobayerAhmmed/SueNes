@@ -12,14 +12,15 @@ You can create virtual environment using Python or Conda.
 - `source .venv/bin/activate`
 - `pip install -r requirements.txt`
 - `python -m spacy download en_core_web_sm`
-- `pip install transformers datasets scikit-learn evaluate`
-- `pip install pyyaml h5py`
+- `pip install transformers datasets scikit-learn evaluate pyyaml h5py`
 
 #### Conda venv (GPU)
 - Create venv following [this](https://www.tensorflow.org/install/pip#linux) documentation
 - `pip install tensorflow tensorflow-datasets tensorflow_hub`
 - Install PyTorch following [this](https://pytorch.org/get-started/locally/) documentation
 - `pip install joblib numpy nltk matplotlib bs4 spacy stanza`
+- `python -m spacy download en_core_web_sm`
+- `pip install transformers datasets scikit-learn evaluate pyyaml h5py`
 
 ## Generate Datasets
 - `mkdir exp exp/data exp/result`

@@ -304,5 +304,5 @@ def sample_generation(conf):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO) # todo: remove this
+    # logging.basicConfig(level=logging.INFO) # todo: remove this
     sample_generation("sentence_conf")
