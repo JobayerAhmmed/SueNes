@@ -11,24 +11,26 @@ dataset_features = {"cnn_dailymail": ['article', 'highlights'],
     "dryrun":[]
     }
 
-dataset_sizes = {"billsum":23455, "scientific_papers":215913, "newsroom":1212740, 
-                 "cnn_dailymail":311971, "big_patent":1341362}
+dataset_sizes = {
+    "cnn_dailymail":311971, 
+    "big_patent":1341362
+}
 
 dataset_sizes_w_split = {# new for sentence-level mutation
-    "billsum":{'train':18949, 'test':3269},   
-    "cnn_dailymail":{'train':287113, 'test':11490},
-    "big_patent":{'train':1207222, 'test':67072},
-    "scientific_papers":{'train':203037, 'test':6440},
+    "cnn_dailymail":{'train':28711, 'test':1149, 'validation': 1336}, # 10%
+    # "big_patent":{'train':120722, 'test':6707, 'validation': 6706}, # 10%
 }
 
 #======== data loading parameters 
 
 # Must match their names in TFDS 
 # dataset_name = "dryrun" 
-dataset_names = ["billsum", "scientific_papers", "cnn_dailymail", "big_patent"] 
+dataset_names = [
+    "cnn_dailymail", 
+    # "big_patent"
+] 
 
-splits = ['train', 'test'] # We only need the train split. We skip validation and test.
-# note that billsum has no validation set
+splits = ['train', 'test', 'validation'] 
 
 #========= data output/dumping parameters 
 
@@ -69,4 +71,5 @@ neg_pos_ratio = 5
 
 # methods used to generate negative samples 
 methods = ["sent_delete"] 
-mode = 'char' # or 'sent'  # measure how many sentences or characters are altered. # TODO: add token one
+# mode = 'char' # or 'sent'  # measure how many sentences or characters are altered. # TODO: add token one
+mode = 'sent'

@@ -1,0 +1,76 @@
+10/3/2022
+===========
+Task:
+Compare sys summa and doc with metric- no reference summary used.
+
+Error:
+-> ignore cuda
+- Bills issue:-> need to download the data dataset=tfds.load(download=True
+- Data storage needed 2TB
+- Input output error: install space, download that feature for spacy.
+- Raise issue in SueNes regarding Spacy download en_core_web_sm
+
+
+Once run the code: Bert, runclassifier.sh-> line 14,15 do not want to run. 
+Go run_classifier.py-> Two doc t1,t2 and sys summary s=t1 first token in summary,t2…
+Std in Bert, concat the token together and add special token [SEP] 
+and special token [CLS]- check hugging face library how they did it.
+Hugging face transformer course- multiple sequences handling- sequence1_ids 
+and 2 is the 2D array. 200 is the special token 
+Putting it all together, CLS and SEP- contcat together
+Sharing the model on hugging face Hub- so SueNes will update on HuggingFace as model. 
+PRE follow GitHub one and (BERT follow huggingface not scenes one).
+Where put SueNes-> redo and implement scenes using transformer library.
+
+Use pre folder - generate training data, and use hugging face transformer model to implement it.
+SueNes will generate the data and use in our transformer model. 
+Then train the generated data.
+Use 10% CNNDM as the dataset and use sentence-delete as the only native mutation method
+
+* Step 1: Use the code in pre folder under SueNes repo to generate training data. 
+Use 10% of CNNDM as the dataset and sentence-delete as the only mutation method.
+* Step 2: Follow the HuggingFace tutorial on transformer to build the SueNes network architecture.
+* Step 3: Train the model using code in Step 2 on data generated in Step 1. 
+You will need to build a loader yourself to feed training data.
+Try finish step1 and 2 done.
+
+https://spacy.io/models/en download this model
+
+Use only training data from SueNes
+Train prajjwal/bert-tiny using the training data
+ prajjwal/bert-tine is already trained. train again with our data - fine tuning
+
+
+10/17/22
+=====================
+1. repeat that tutorial and if there is any issue
+2. try prajjwal/bert-tiny with our suenes data
+Step 2:
+- Load the train data
+- Train the model using 
+- Tokenize it
+- Plugin the input and output to fine tune the model
+- Tokenized_data- 2D numpy array, labels should be score
+- Pair the corrupted summary and get score 
+- Not classification,, use RegressionModel - hugging face transformer fine tuning regression
+- Bert is binary, use “numlevel=1” will work.
+- Bert tokenizer use.
+
+10/31/22
+=====================
+Compile use: regression model, use loss for regression model
+- [No: Cross entropy for classification problem]
+- Feedback: [Push to repo class one]
+- First use a loss function for regression (this problem for regression) rather classification
+Step 4:
+- Don’t publish raw data, we just publish model there.
+- Fork SueNes, push the new code to the repo folder
+- Test models trained in your way. 
+- Wrap your code and model into a function that others can use it
+- Load the model (Use PyTorch + TF- 2 files total need to push on our repo )
+
+11/16/22
+====================
+- Move all the code to a directory named transformer.
+- Train two more models with billsum and big patent datasets.
+- Publish the two models to huggingface.

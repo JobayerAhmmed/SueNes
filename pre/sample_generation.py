@@ -378,7 +378,7 @@ def mutate_switch(pair, vocab, method, neg_pos_ratio, sent_end):
     
     (_doc, _sum) = pair 
     # split the words and then feed to mutator 
-#    print (_sum)
+    # print (_sum)
     splitted_summary = _sum.split()
 
     ratios = [random.uniform(0, 1) for _ in range(neg_pos_ratio)]
@@ -541,13 +541,13 @@ def sample_generation(conf):
 
 if __name__ == "__main__":
     # Generate samples from CNN DM using configurations in cnndm_conf.py 
-    _ = sample_generation("cnndm_conf")
+    # _ = sample_generation("cnndm_conf")
 
     # Generate samples from Billsum
     _ = sample_generation("billsum_conf")
 
     # Generate samples from Scientific papers
-    _ = sample_generation("scientific_papers_conf")
+    # _ = sample_generation("scientific_papers_conf")
 
     # Generate samples from big patents
-    _ = sample_generation("big_patents_conf")
+    # _ = sample_generation("big_patents_conf")

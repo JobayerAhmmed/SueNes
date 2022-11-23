@@ -14,6 +14,7 @@ import spacy
 import tensorflow_datasets as tfds
 
 import time
+import logging # todo: remove this
 
 from sample_generation import auto_escape, replace_special_character, normalize_sentence
 
@@ -220,9 +221,11 @@ def generate_one(dataset_name, split, features, methods, neg_pos_ratio, load_sta
     """
 
     # 1. Load data 
-    dataset = tfds.load(name=dataset_name, download=False, 
-                        split=split+ '[{}:{}]'.format(load_start, load_end)
-                       )
+    dataset = tfds.load(name=dataset_name,
+                        split=split+ '[{}:{}]'.format(load_start, load_end),
+                        download=True,
+                        try_gcs=True # todo: remove this
+                    )
 
     pairs = [(normalize_sentence(piece[features[0]].numpy().decode("utf-8"), special_chars), 
               normalize_sentence(piece[features[1]].numpy().decode("utf-8"), special_chars) )
@@ -301,4 +304,5 @@ def sample_generation(conf):
 
 
 if __name__ == "__main__":
+    # logging.basicConfig(level=logging.INFO) # todo: remove this
     sample_generation("sentence_conf")
