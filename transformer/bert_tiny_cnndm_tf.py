@@ -60,7 +60,8 @@ def bert_tiny_cnndm_tf():
     model = TFAutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=1, from_pt=True)
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
-        loss=tf.keras.losses.MeanSquaredError())
+        loss=tf.keras.losses.MeanSquaredError(),
+        metrics=[tf.keras.metrics.Accuracy(), tf.keras.metrics.MeanSquaredError()])
 
     # This part is optional.
     # You can save your model while training.
@@ -79,7 +80,7 @@ def bert_tiny_cnndm_tf():
         model.load_weights(latest_checkpoint)
 
     # Train the Model
-    train_history = model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
+    history = model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
 
     # Save the Trained Model
     # 
@@ -87,23 +88,30 @@ def bert_tiny_cnndm_tf():
     # and use for predicting the result
     tokenizer.save_pretrained(models_dir)
     model.save_pretrained(models_dir)
+    model.evaluate()
 
     # Predict score for validation dataset (optional)
     # 
     # If you pass a dataset, it will predict the result for all data of the dataset.
     model.predict(tf_validation_dataset)
 
+    print('--------------------')
+    print(history.history.keys())
+    for key in history.history.keys():
+        print(history.history[key])
+    print('------------------')
+
     # Plot training accuracy
-    plt.plot(train_history.history['accuracy'])
-    plt.plot(train_history.history['val_accuracy'])
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
     plt.title('Model Accuracy')
     plt.ylabel('accuracy')
     plt.xlabel('epoch')
     plt.legend(['train', 'validation'], loc='upper left')
     plt.show()
     # Plot training loss
-    plt.plot(train_history.history['loss'])
-    plt.plot(train_history.history['val_loss'])
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
     plt.title('Model Loss')
     plt.ylabel('loss')
     plt.xlabel('epoch')

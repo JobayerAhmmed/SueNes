@@ -15,6 +15,7 @@ from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification
 from transformers import TrainingArguments, Trainer
 from transformers import DataCollatorWithPadding
+import matplotlib.pyplot as plt
 
 
 def process_data(split: str):
@@ -87,11 +88,33 @@ def bert_tiny_cnndm_pt():
         data_collator=data_collator)
 
     # Train the Model
-    trainer.train()
+    history = trainer.train()
     # trainer.train(resume_from_checkpoint=True)
     trainer.save_model(models_dir)
     trainer.evaluate()
 
+    print('--------------------')
+    print(history.history.keys())
+    for key in history.history.keys():
+        print(history.history[key])
+    print('------------------')
+
+    # Plot training accuracy
+    plt.plot(history.history['accuracy'])
+    plt.plot(history.history['val_accuracy'])
+    plt.title('Model Accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.show()
+    # Plot training loss
+    plt.plot(history.history['loss'])
+    plt.plot(history.history['val_loss'])
+    plt.title('Model Loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.show()
 
 if __name__ == "__main__":
     bert_tiny_cnndm_pt()
