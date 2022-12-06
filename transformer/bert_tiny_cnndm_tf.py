@@ -92,14 +92,10 @@ def bert_tiny_cnndm_tf():
     tokenizer.save_pretrained(models_dir)
     model.save_pretrained(models_dir)
 
-    print('Training done! Start evaluating............................')
-    val_history = model.evaluate()
-    print('Evaluation done!')
-
     # Predict score for validation dataset (optional)
     # 
     # If you pass a dataset, it will predict the result for all data of the dataset.
-    model.predict(tf_validation_dataset)
+    val_history = model.predict(tf_validation_dataset)
 
     print('--------------------')
     print('history', history)
