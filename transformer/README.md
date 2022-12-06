@@ -28,7 +28,6 @@ You can create virtual environment using Python or Conda.
 - `mkdir exp exp/data exp/result`
 - `cd pre`
 - `python3 sentence_scramble.py`
-- `python3 sample_generation.py`
 
 ## Bert Tiny CNN Daily Mail TensorFlow
 Code for the model is in `bert_tiny_cnndm_tf.py` file.
