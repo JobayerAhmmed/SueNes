@@ -1,6 +1,6 @@
-# SueNes: A Weakly Supervised Approach to Evaluating Single-Document Summarization via Negative Sampling
+# Refactorize SueNes Using HuggingFace Transformer Library​
 
-[Here is NAACL 2022 paper](https://aclanthology.org/2022.naacl-main.175/)
+[SueNes paper](https://aclanthology.org/2022.naacl-main.175/)
 
 ## Repeat Transformer-based Experiments
 <!-- Please read [README.md](transformer/README.md) -->
@@ -34,7 +34,6 @@ You can create virtual environment using Python or Conda.
 - `mkdir exp exp/data exp/result`
 - `cd pre`
 - `python3 sentence_scramble.py`
-- `python3 sample_generation.py`
 
 ### Bert Tiny CNN Daily Mail TensorFlow
 Code for the model is in `bert_tiny_cnndm_tf.py` file.
