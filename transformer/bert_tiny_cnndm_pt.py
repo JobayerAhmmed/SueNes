@@ -15,7 +15,6 @@ from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification
 from transformers import TrainingArguments, Trainer
 from transformers import DataCollatorWithPadding
-import matplotlib.pyplot as plt
 
 
 def process_data(split: str):
@@ -51,9 +50,6 @@ def bert_tiny_cnndm_pt():
         batched=True)
     validation_dataset = validation_dataset.map(lambda item: tokenizer(item["text"], item["summary"], padding=True, truncation=True), 
         batched=True)
-
-    train_dataset = train_dataset.shuffle(seed=12).select(range(24))
-    validation_dataset = validation_dataset.shuffle(seed=12).select(range(16))
 
     train_dataset = train_dataset.rename_column("score", "labels")
     validation_dataset = validation_dataset.rename_column("score", "labels")
@@ -91,37 +87,12 @@ def bert_tiny_cnndm_pt():
         data_collator=data_collator)
 
     # Train the Model
-    history = trainer.train()
+    trainer.train()
     # trainer.train(resume_from_checkpoint=True)
     trainer.save_model(models_dir)
 
-    print('Training done! Start evaluating............................')
-    val_history = trainer.evaluate()
-    print('Evaluation done!')
-
-    print('--------------------')
-    print('history', history)
-    print('eval history', val_history)
-    # for key in history.history.keys():
-    #     print(history.history[key])
-    # print('------------------')
-
-    # Plot training accuracy
-    # plt.plot(history.history['accuracy'])
-    # plt.plot(history.history['val_accuracy'])
-    # plt.title('Model Accuracy')
-    # plt.ylabel('accuracy')
-    # plt.xlabel('epoch')
-    # plt.legend(['train', 'validation'], loc='upper left')
-    # plt.show()
-    # # Plot training loss
-    # plt.plot(history.history['loss'])
-    # plt.plot(history.history['val_loss'])
-    # plt.title('Model Loss')
-    # plt.ylabel('loss')
-    # plt.xlabel('epoch')
-    # plt.legend(['train', 'validation'], loc='upper left')
-    # plt.show()
+    trainer.evaluate()
+    
 
 if __name__ == "__main__":
     bert_tiny_cnndm_pt()

@@ -12,7 +12,6 @@ import tensorflow as tf
 from datasets import Dataset
 from transformers import AutoTokenizer
 from transformers import TFAutoModelForSequenceClassification
-import matplotlib.pyplot as plt
 
 
 def process_data(split: str):
