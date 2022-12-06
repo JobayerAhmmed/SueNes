@@ -49,9 +49,6 @@ def bert_tiny_cnndm_tf():
     validation_dataset = validation_dataset.map(lambda item: tokenizer(item["text"], item["summary"], padding=True, truncation=True), 
         batched=True)
 
-    train_dataset = train_dataset.shuffle(seed=12).select(range(24))
-    validation_dataset = validation_dataset.shuffle(seed=12).select(range(16))
-
     tf_train_dataset = train_dataset.to_tf_dataset(
         columns=["input_ids", "token_type_ids", "attention_mask"], label_cols=["score"],
         shuffle=True, batch_size=8)
@@ -83,7 +80,7 @@ def bert_tiny_cnndm_tf():
         model.load_weights(latest_checkpoint)
 
     # Train the Model
-    history = model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
+    model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
 
     # Save the Trained Model
     # 
@@ -95,35 +92,7 @@ def bert_tiny_cnndm_tf():
     # Predict score for validation dataset (optional)
     # 
     # If you pass a dataset, it will predict the result for all data of the dataset.
-    val_history = model.predict(tf_validation_dataset)
-
-    print('--------------------')
-    print('history', history)
-    print('history.metrics', history.metrics)
-    print('history.loss', history.loss)
-    print('val_history', val_history)
-
-    print(history.history.keys())
-    for key in history.history.keys():
-        print(history.history[key])
-    print('------------------')
-
-    # Plot training accuracy
-    # plt.plot(history.history['accuracy'])
-    # plt.plot(history.history['val_accuracy'])
-    # plt.title('Model Accuracy')
-    # plt.ylabel('accuracy')
-    # plt.xlabel('epoch')
-    # plt.legend(['train', 'validation'], loc='upper left')
-    # plt.show()
-    # # Plot training loss
-    # plt.plot(history.history['loss'])
-    # plt.plot(history.history['val_loss'])
-    # plt.title('Model Loss')
-    # plt.ylabel('loss')
-    # plt.xlabel('epoch')
-    # plt.legend(['train', 'validation'], loc='upper left')
-    # plt.show()
+    model.predict(tf_validation_dataset)
 
 
 if __name__ == "__main__":
