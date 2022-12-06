@@ -61,7 +61,7 @@ def bert_tiny_cnndm_tf():
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
         loss=tf.keras.losses.MeanSquaredError(),
-        metrics=[tf.keras.metrics.Accuracy(), tf.keras.metrics.MeanSquaredError()])
+        metrics=[tf.keras.metrics.Accuracy()])
 
     # This part is optional.
     # You can save your model while training.
