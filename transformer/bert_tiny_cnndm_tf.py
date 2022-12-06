@@ -12,6 +12,7 @@ import tensorflow as tf
 from datasets import Dataset
 from transformers import AutoTokenizer
 from transformers import TFAutoModelForSequenceClassification
+import matplotlib.pyplot as plt
 
 
 def process_data(split: str):
@@ -78,7 +79,7 @@ def bert_tiny_cnndm_tf():
         model.load_weights(latest_checkpoint)
 
     # Train the Model
-    model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
+    train_history = model.fit(tf_train_dataset, validation_data=tf_validation_dataset, epochs=3, callbacks=callbacks)
 
     # Save the Trained Model
     # 
@@ -91,6 +92,23 @@ def bert_tiny_cnndm_tf():
     # 
     # If you pass a dataset, it will predict the result for all data of the dataset.
     model.predict(tf_validation_dataset)
+
+    # Plot training accuracy
+    plt.plot(train_history.history['accuracy'])
+    plt.plot(train_history.history['val_accuracy'])
+    plt.title('Model Accuracy')
+    plt.ylabel('accuracy')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.show()
+    # Plot training loss
+    plt.plot(train_history.history['loss'])
+    plt.plot(train_history.history['val_loss'])
+    plt.title('Model Loss')
+    plt.ylabel('loss')
+    plt.xlabel('epoch')
+    plt.legend(['train', 'validation'], loc='upper left')
+    plt.show()
 
 
 if __name__ == "__main__":
