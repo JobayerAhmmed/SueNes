@@ -49,6 +49,9 @@ def bert_tiny_cnndm_tf():
     validation_dataset = validation_dataset.map(lambda item: tokenizer(item["text"], item["summary"], padding=True, truncation=True), 
         batched=True)
 
+    train_dataset = train_dataset.shuffle(seed=12).select(range(24))
+    validation_dataset = validation_dataset.shuffle(seed=12).select(range(16))
+
     tf_train_dataset = train_dataset.to_tf_dataset(
         columns=["input_ids", "token_type_ids", "attention_mask"], label_cols=["score"],
         shuffle=True, batch_size=8)
@@ -61,7 +64,7 @@ def bert_tiny_cnndm_tf():
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
         loss=tf.keras.losses.MeanSquaredError(),
-        metrics=[tf.keras.metrics.Accuracy()])
+        metrics=[tf.keras.metrics.MeanSquaredError()])
 
     # This part is optional.
     # You can save your model while training.
@@ -88,7 +91,10 @@ def bert_tiny_cnndm_tf():
     # and use for predicting the result
     tokenizer.save_pretrained(models_dir)
     model.save_pretrained(models_dir)
-    model.evaluate()
+
+    print('Training done! Start evaluating............................')
+    val_history = model.evaluate()
+    print('Evaluation done!')
 
     # Predict score for validation dataset (optional)
     # 
@@ -96,27 +102,32 @@ def bert_tiny_cnndm_tf():
     model.predict(tf_validation_dataset)
 
     print('--------------------')
+    print('history', history)
+    print('history.metrics', history.metrics)
+    print('history.loss', history.loss)
+    print('val_history', val_history)
+
     print(history.history.keys())
     for key in history.history.keys():
         print(history.history[key])
     print('------------------')
 
     # Plot training accuracy
-    plt.plot(history.history['accuracy'])
-    plt.plot(history.history['val_accuracy'])
-    plt.title('Model Accuracy')
-    plt.ylabel('accuracy')
-    plt.xlabel('epoch')
-    plt.legend(['train', 'validation'], loc='upper left')
-    plt.show()
-    # Plot training loss
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
-    plt.title('Model Loss')
-    plt.ylabel('loss')
-    plt.xlabel('epoch')
-    plt.legend(['train', 'validation'], loc='upper left')
-    plt.show()
+    # plt.plot(history.history['accuracy'])
+    # plt.plot(history.history['val_accuracy'])
+    # plt.title('Model Accuracy')
+    # plt.ylabel('accuracy')
+    # plt.xlabel('epoch')
+    # plt.legend(['train', 'validation'], loc='upper left')
+    # plt.show()
+    # # Plot training loss
+    # plt.plot(history.history['loss'])
+    # plt.plot(history.history['val_loss'])
+    # plt.title('Model Loss')
+    # plt.ylabel('loss')
+    # plt.xlabel('epoch')
+    # plt.legend(['train', 'validation'], loc='upper left')
+    # plt.show()
 
 
 if __name__ == "__main__":

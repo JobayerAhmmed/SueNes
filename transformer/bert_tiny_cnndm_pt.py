@@ -52,6 +52,9 @@ def bert_tiny_cnndm_pt():
     validation_dataset = validation_dataset.map(lambda item: tokenizer(item["text"], item["summary"], padding=True, truncation=True), 
         batched=True)
 
+    train_dataset = train_dataset.shuffle(seed=12).select(range(24))
+    validation_dataset = validation_dataset.shuffle(seed=12).select(range(16))
+
     train_dataset = train_dataset.rename_column("score", "labels")
     validation_dataset = validation_dataset.rename_column("score", "labels")
 
@@ -59,7 +62,7 @@ def bert_tiny_cnndm_pt():
     model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=1)
 
     # Metric
-    metric = evaluate.load("accuracy")
+    metric = evaluate.load("mse")
     def compute_metrics(eval_pred):
         logits, labels = eval_pred
         predictions = np.argmax(logits, axis=-1)
@@ -91,30 +94,34 @@ def bert_tiny_cnndm_pt():
     history = trainer.train()
     # trainer.train(resume_from_checkpoint=True)
     trainer.save_model(models_dir)
-    trainer.evaluate()
+
+    print('Training done! Start evaluating............................')
+    val_history = trainer.evaluate()
+    print('Evaluation done!')
 
     print('--------------------')
-    print(history.history.keys())
-    for key in history.history.keys():
-        print(history.history[key])
-    print('------------------')
+    print('history', history)
+    print('eval history', val_history)
+    # for key in history.history.keys():
+    #     print(history.history[key])
+    # print('------------------')
 
     # Plot training accuracy
-    plt.plot(history.history['accuracy'])
-    plt.plot(history.history['val_accuracy'])
-    plt.title('Model Accuracy')
-    plt.ylabel('accuracy')
-    plt.xlabel('epoch')
-    plt.legend(['train', 'validation'], loc='upper left')
-    plt.show()
-    # Plot training loss
-    plt.plot(history.history['loss'])
-    plt.plot(history.history['val_loss'])
-    plt.title('Model Loss')
-    plt.ylabel('loss')
-    plt.xlabel('epoch')
-    plt.legend(['train', 'validation'], loc='upper left')
-    plt.show()
+    # plt.plot(history.history['accuracy'])
+    # plt.plot(history.history['val_accuracy'])
+    # plt.title('Model Accuracy')
+    # plt.ylabel('accuracy')
+    # plt.xlabel('epoch')
+    # plt.legend(['train', 'validation'], loc='upper left')
+    # plt.show()
+    # # Plot training loss
+    # plt.plot(history.history['loss'])
+    # plt.plot(history.history['val_loss'])
+    # plt.title('Model Loss')
+    # plt.ylabel('loss')
+    # plt.xlabel('epoch')
+    # plt.legend(['train', 'validation'], loc='upper left')
+    # plt.show()
 
 if __name__ == "__main__":
     bert_tiny_cnndm_pt()
