@@ -59,7 +59,8 @@ def bert_tiny_cnndm_tf():
     model = TFAutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=1, from_pt=True)
     model.compile(
         optimizer=tf.keras.optimizers.Adam(learning_rate=1e-5),
-        loss=tf.keras.losses.MeanSquaredError())
+        loss=tf.keras.losses.MeanSquaredError(),
+        metrics=[tf.keras.metrics.MeanSquaredError()])
 
     # This part is optional.
     # You can save your model while training.

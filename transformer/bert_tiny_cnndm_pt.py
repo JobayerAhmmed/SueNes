@@ -58,7 +58,7 @@ def bert_tiny_cnndm_pt():
     model = AutoModelForSequenceClassification.from_pretrained(model_checkpoint, num_labels=1)
 
     # Metric
-    metric = evaluate.load("accuracy")
+    metric = evaluate.load("mse")
     def compute_metrics(eval_pred):
         logits, labels = eval_pred
         predictions = np.argmax(logits, axis=-1)
@@ -90,8 +90,9 @@ def bert_tiny_cnndm_pt():
     trainer.train()
     # trainer.train(resume_from_checkpoint=True)
     trainer.save_model(models_dir)
-    trainer.evaluate()
 
+    trainer.evaluate()
+    
 
 if __name__ == "__main__":
     bert_tiny_cnndm_pt()
