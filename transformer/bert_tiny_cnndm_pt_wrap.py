@@ -58,7 +58,7 @@ if __name__ == "__main__":
     summary3 = "To reduce the risk of food poisoning, pilots do not eat the same meals. The world's strongest man' wouldn't be able to open a door mid-flight."
     summaries = [summary1, summary2, summary3]
     documents = [text] * 3
-    path_to_model = "./models/bert_tiny_cnndm_pt"
+    path_to_model = "./models_pt/bert_tiny_cnndm_pt"
 
     pred_scores = suenes(documents, summaries, path_to_model)
 
