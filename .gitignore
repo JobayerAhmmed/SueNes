@@ -22,3 +22,5 @@ checkpoint
 .idea
 exp
 models
+models_tf
+models_pt
