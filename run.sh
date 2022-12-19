@@ -14,9 +14,9 @@ cd ..
 cd transformer
 
 python3 bert_tiny_cnndm_tf.py
-python3 bert_tiny_cnndm_tf_wrap.py
-
 python3 bert_tiny_cnndm_pt.py
+
+python3 bert_tiny_cnndm_tf_wrap.py
 python3 bert_tiny_cnndm_pt_wrap.py
 
 deactivate
