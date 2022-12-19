@@ -16,28 +16,30 @@ echo "Executing pip install transformers datasets scikit-learn evaluate pyyaml h
 pip install transformers datasets scikit-learn evaluate pyyaml h5py
 echo "Done pip install transformers datasets scikit-learn evaluate pyyaml h5py"
 echo "=============================================================================================="
-echo "Executing mkdir exp exp/data exp/result"
+
 mkdir exp exp/data exp/result
-echo "Done mkdir exp exp/data exp/result"
+cd pre
+echo "Executing python3 sentence_scramble.py"
+python3 sentence_scramble.py
+echo "Done python3 sentence_scramble.py"
 echo "=============================================================================================="
-echo "Executing python3 pre/sentence_scramble.py"
-python3 pre/sentence_scramble.py
-echo "Done python3 pre/sentence_scramble.py"
+
+cd ..
+cd transformer
+echo "Executing python3 bert_tiny_cnndm_tf.py"
+python3 bert_tiny_cnndm_tf.py
+echo "Done python3 bert_tiny_cnndm_tf.py"
 echo "=============================================================================================="
-echo "Executing python3 transformer/bert_tiny_cnndm_tf.py"
-python3 transformer/bert_tiny_cnndm_tf.py
-echo "Done python3 transformer/bert_tiny_cnndm_tf.py"
+echo "Executing python3 bert_tiny_cnndm_tf_wrap.py"
+python3 bert_tiny_cnndm_tf_wrap.py
+echo "Done python3 bert_tiny_cnndm_tf_wrap.py"
 echo "=============================================================================================="
-echo "Executing python3 transformer/bert_tiny_cnndm_tf_wrap.py"
-python3 transformer/bert_tiny_cnndm_tf_wrap.py
-echo "Done python3 transformer/bert_tiny_cnndm_tf_wrap.py"
+echo "Executing python3 bert_tiny_cnndm_pt.py"
+python3 bert_tiny_cnndm_pt.py
+echo "Done python3 bert_tiny_cnndm_pt.py"
 echo "=============================================================================================="
-echo "Executing python3 transformer/bert_tiny_cnndm_pt.py"
-python3 transformer/bert_tiny_cnndm_pt.py
-echo "Done python3 transformer/bert_tiny_cnndm_pt.py"
-echo "=============================================================================================="
-echo "Executing python3 transformer/bert_tiny_cnndm_pt_wrap.py"
-python3 transformer/bert_tiny_cnndm_pt_wrap.py
-echo "Done python3 transformer/bert_tiny_cnndm_pt_wrap.py"
+echo "Executing python3 bert_tiny_cnndm_pt_wrap.py"
+python3 bert_tiny_cnndm_pt_wrap.py
+echo "Done python3 bert_tiny_cnndm_pt_wrap.py"
 echo "=============================================================================================="
 deactivate
