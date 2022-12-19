@@ -2,6 +2,17 @@
 
 [SueNes paper](https://aclanthology.org/2022.naacl-main.175/)
 
+## Team Members
+- Jobayer Ahmmed
+- Jahid Hasan
+
+## Run The Experement Automatically
+- Open a Linux Terminal
+- Clone the repo: `git clone https://github.com/SigmaWe/SueNes_RE.git`
+- Go to `SueNes_RE` directory: `cd SueNes_RE`
+- Give execution permission to `run.sh` file: `chmod +x run.sh`
+- Finally, run the script: `source run.sh`
+
 ## Repeat Transformer-based Experiments
 <!-- Please read [README.md](transformer/README.md) -->
 The `transformer` directory contains code for training transformer-based models with different datasets.
