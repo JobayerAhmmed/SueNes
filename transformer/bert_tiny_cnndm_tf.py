@@ -66,7 +66,7 @@ def bert_tiny_cnndm_tf():
     # You can save your model while training.
     # If your process crashes while training, you can 
     # retstart the training from just before the crash.
-    models_dir = "./models/bert_tiny_cnndm_tf"
+    models_dir = "./models_tf/bert_tiny_cnndm_tf"
     checkpoint_path = models_dir + "/checkpoints/cp-{epoch}.ckpt"
     checkpoint_dir = os.path.dirname(checkpoint_path)
     callbacks = tf.keras.callbacks.ModelCheckpoint(

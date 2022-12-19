@@ -65,7 +65,7 @@ def bert_tiny_cnndm_pt():
         return metric.compute(predictions=predictions, references=labels)
 
     # Training
-    models_dir = "./models/bert_tiny_cnndm_pt"
+    models_dir = "./models_pt/bert_tiny_cnndm_pt"
     checkpoint_dir = models_dir + "/checkpoints"
 
     training_args = TrainingArguments(

@@ -2,6 +2,24 @@
 
 [SueNes paper](https://aclanthology.org/2022.naacl-main.175/)
 
+## Team Members
+- Jobayer Ahmmed
+- Jahid Hasan
+
+## Run The Experiment Automatically
+- Open a Linux Terminal
+- Clone the repo: `git clone https://github.com/SigmaWe/SueNes_RE.git`
+- Go to SueNes_RE directory: `cd SueNes_RE`
+- Give execution permission to run.sh file: `chmod +x run.sh`
+- Finally, run the script: `source run.sh`
+
+We trained two different models from the same checkpoint. One is using Tensorflow
+and other one is using PyTorch. The run.sh scipt runs all the python files for training the two models and testing them with sample data. For testing, we call our trained model with 
+three pairs of document and summary. The original scores and the predicted scores are shown 
+in the terminal.
+
+The rest of the part is step-by-step instructions.
+
 ## Repeat Transformer-based Experiments
 <!-- Please read [README.md](transformer/README.md) -->
 The `transformer` directory contains code for training transformer-based models with different datasets.
