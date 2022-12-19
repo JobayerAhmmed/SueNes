@@ -18,6 +18,8 @@ and other one is using PyTorch. The run.sh scipt runs all the python files for t
 three pairs of document and summary. The original scores and the predicted scores are shown 
 in the terminal.
 
+The rest of the part is step-by-step instructions.
+
 ## Repeat Transformer-based Experiments
 <!-- Please read [README.md](transformer/README.md) -->
 The `transformer` directory contains code for training transformer-based models with different datasets.
