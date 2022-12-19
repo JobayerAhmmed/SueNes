@@ -6,7 +6,7 @@
 - Jobayer Ahmmed
 - Jahid Hasan
 
-## Run The Experement Automatically
+## Run The Experiment Automatically
 - Open a Linux Terminal
 - Clone the repo: `git clone https://github.com/SigmaWe/SueNes_RE.git`
 - Go to SueNes_RE directory: `cd SueNes_RE`
