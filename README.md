@@ -9,8 +9,8 @@
 ## Run The Experement Automatically
 - Open a Linux Terminal
 - Clone the repo: `git clone https://github.com/SigmaWe/SueNes_RE.git`
-- Go to `SueNes_RE` directory: `cd SueNes_RE`
-- Give execution permission to `run.sh` file: `chmod +x run.sh`
+- Go to SueNes_RE directory: `cd SueNes_RE`
+- Give execution permission to run.sh file: `chmod +x run.sh`
 - Finally, run the script: `source run.sh`
 
 ## Repeat Transformer-based Experiments
